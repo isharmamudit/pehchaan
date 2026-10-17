@@ -139,6 +139,22 @@ export default function Protect() {
           </PillLink>
         </div>
 
+        {!file && (
+          <button
+            type="button"
+            onClick={() => fileRef.current?.click()}
+            className="flex w-full flex-col items-center justify-center gap-3 rounded-2xl border-2 border-dashed border-line/20 bg-canvas-soft/60 py-8 px-4 text-center transition-all active:scale-[0.99] hover:bg-canvas-soft"
+          >
+            <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-white shadow-sm text-2xl">
+              📷
+            </div>
+            <div>
+              <p className="text-sm font-semibold text-ink">{strings.protect.upload}</p>
+              <p className="text-xs text-ink-mute mt-0.5">Tap to select photo from gallery or camera</p>
+            </div>
+          </button>
+        )}
+
         <input
           ref={fileRef}
           type="file"

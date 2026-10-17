@@ -5,7 +5,6 @@
 
 import { Link } from 'react-router-dom';
 import { Card, EvidenceBadge, Notice, VerdictBand } from '../ui';
-import { PillButton, PillLink } from '../Pill';
 import Highlighted from './Highlighted';
 import PrivacyChip from './PrivacyChip';
 import ShareCard from './ShareCard';
@@ -74,8 +73,10 @@ export default function ResultView({
           {spanFindings.map((finding, i) => (
             <li
               key={finding.id}
-              className={`rounded-2xl p-4 transition-colors ${
-                activeId === finding.id ? 'bg-ink text-white' : 'bg-white/70'
+              className={`rounded-2xl p-4 transition-all ${
+                activeId === finding.id
+                  ? 'bg-ink text-white shadow-md'
+                  : 'bg-white/95 text-ink border border-line/15 shadow-sm'
               }`}
             >
               <div className="flex items-center justify-between gap-3">
@@ -293,15 +294,23 @@ export default function ResultView({
         </ol>
       </section>
 
-      <div className="flex flex-wrap gap-2">
-        <PillButton tone="dark" dot onClick={onReset}>
-          {strings.check.checkAnother}
-        </PillButton>
+      <div className="flex flex-col sm:flex-row flex-wrap gap-2.5">
+        <button
+          type="button"
+          onClick={onReset}
+          className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-2xl bg-ink px-6 py-3.5 text-sm font-semibold text-white shadow-sm transition-transform active:scale-[0.98]"
+        >
+          <span>{strings.check.checkAnother}</span>
+          <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-cyan" />
+        </button>
 
         {topTactic ? (
-          <PillLink to={`/practise/${personaForTactic(topTactic)}`} tone="light">
+          <Link
+            to={`/practise/${personaForTactic(topTactic)}`}
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-2xl bg-white px-5 py-3.5 text-sm font-semibold text-ink border border-line/15 shadow-sm transition-transform active:scale-[0.98]"
+          >
             {strings.check.practiseThis}
-          </PillLink>
+          </Link>
         ) : null}
 
         <ShareCard
@@ -313,7 +322,7 @@ export default function ResultView({
 
         <Link
           to="/help"
-          className="pill pill-light"
+          className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-2xl bg-white px-5 py-3.5 text-sm font-semibold text-ink border border-line/15 shadow-sm transition-transform active:scale-[0.98]"
         >
           {strings.app.getHelp}
         </Link>

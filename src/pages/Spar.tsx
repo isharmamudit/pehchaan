@@ -7,7 +7,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
 import { Card, Notice, Page, Spinner } from '../components/ui';
-import { PillButton, PillLink } from '../components/Pill';
+import { PillLink } from '../components/Pill';
 import {
   applyTurn,
   HIGH_RISK_END_LINE,
@@ -152,24 +152,30 @@ export default function Spar() {
       {coaching ? <Notice tone="warn">{strings.practise.coaching}</Notice> : null}
 
       {session.ended ? null : (
-        <div className="mt-4 flex flex-wrap gap-2">
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            void send();
+          }}
+          className="mt-4 flex items-center gap-2 rounded-full bg-white p-1.5 shadow-sm border border-line/15"
+        >
           <input
             value={draft}
             onChange={(e) => setDraft(e.target.value.slice(0, 500))}
-            onKeyDown={(e) => {
-              if (e.key === 'Enter' && !e.shiftKey) {
-                e.preventDefault();
-                void send();
-              }
-            }}
             aria-label={strings.practise.yourTurn}
             placeholder={strings.practise.yourTurn}
-            className="min-h-[52px] flex-1 rounded-full bg-white/80 px-5 text-[1rem] outline-none placeholder:text-ink-mute"
+            className="flex-1 rounded-full bg-transparent px-4 py-2.5 text-[1rem] outline-none placeholder:text-ink-mute"
           />
-          <PillButton tone="dark" dot onClick={() => void send()}>
-            {strings.practise.send}
-          </PillButton>
-        </div>
+          <button
+            type="submit"
+            disabled={!draft.trim() || busy}
+            className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-ink text-white transition-transform active:scale-90 disabled:opacity-40"
+          >
+            <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </button>
+        </form>
       )}
 
       {session.ended && score ? (

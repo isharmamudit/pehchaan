@@ -25,10 +25,34 @@ export default function Help() {
         {strings.help.title}
       </PageTitle>
 
-      <div className="mb-8 flex flex-wrap gap-2">
-        <PillLink href={HELPLINES.cyberFraud.tel} tone="dark" dot>
-          {s({ en: 'Call 1930 now', hi: 'अभी 1930 पर कॉल कीजिए' })}
-        </PillLink>
+      <div className="mb-6 rounded-3xl bg-danger p-5 sm:p-6 text-white shadow-md">
+        <div className="flex items-center justify-between gap-3">
+          <div>
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-white/20 px-2.5 py-0.5 text-[0.68rem] font-semibold uppercase tracking-wider text-white">
+              <span className="h-1.5 w-1.5 rounded-full bg-white animate-pulse" />
+              {s({ en: 'Emergency Helpline', hi: 'आपातकालीन हेल्पलाइन' })}
+            </span>
+            <h2 className="mt-2 text-3xl font-extrabold tracking-tight">1930</h2>
+            <p className="mt-1 text-xs sm:text-sm text-white/90 max-w-sm">
+              {s({
+                en: 'Call immediately if money was deducted. The first 2 hours are the golden window.',
+                hi: 'पैसे कटने पर तुरंत कॉल करें। पहले 2 घंटे पैसे वापस रुकवाने के लिए सबसे महत्वपूर्ण हैं।',
+              })}
+            </p>
+          </div>
+          <a
+            href={HELPLINES.cyberFraud.tel}
+            className="flex h-14 w-14 sm:h-16 sm:w-16 shrink-0 items-center justify-center rounded-2xl bg-white text-danger shadow-md transition-transform active:scale-95 hover:bg-white/90"
+            aria-label="Call 1930"
+          >
+            <svg className="h-7 w-7 sm:h-8 sm:w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div className="mb-6 flex flex-wrap gap-2">
         <PillLink href={HELPLINES.cyberPortal} tone="light">
           cybercrime.gov.in
         </PillLink>
@@ -37,17 +61,21 @@ export default function Help() {
         </PillLink>
       </div>
 
-      <h2 className="mb-4 text-sm font-semibold uppercase tracking-[0.14em]">{strings.help.pick}</h2>
+      <h2 className="mb-3 text-xs sm:text-sm font-semibold uppercase tracking-[0.14em] text-ink-mute">
+        {strings.help.pick}
+      </h2>
 
-      <ul className="grid gap-3 md:grid-cols-2">
+      <ul className="grid gap-2.5 sm:gap-3 md:grid-cols-2">
         {SITUATIONS.map((item) => (
           <li key={item.id}>
             <button
               type="button"
               onClick={() => setPicked(item.id === picked ? null : item.id)}
               aria-expanded={item.id === picked}
-              className={`w-full rounded-media p-5 text-left transition-colors ${
-                item.id === picked ? 'bg-ink text-white' : 'bg-white/70 hover:bg-white'
+              className={`w-full rounded-2xl p-4 sm:p-5 text-left transition-all active:scale-[0.99] ${
+                item.id === picked
+                  ? 'bg-ink text-white shadow-md'
+                  : 'bg-white/95 text-ink border border-line/15 shadow-sm hover:bg-white'
               }`}
             >
               <span className="flex items-start justify-between gap-3">

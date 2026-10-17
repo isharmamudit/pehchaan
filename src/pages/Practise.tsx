@@ -66,46 +66,52 @@ export default function Practise() {
         {PERSONA_IDS.filter((id) => id !== 'personalised').map((id) => {
           const persona = PERSONAS[id];
           return (
-            <li key={id} className="rounded-media bg-white/70 p-6">
-              <h2 className="display" style={{ fontSize: 'clamp(1.5rem, 3.6vw, 2.3rem)' }}>
-                {s(persona.name)}
-              </h2>
-              <p className="mt-3 text-sm leading-[1.5] text-ink-soft">{s(persona.blurb)}</p>
+            <li key={id} className="rounded-3xl bg-white/95 border border-line/15 p-5 sm:p-6 shadow-sm flex flex-col justify-between">
+              <div>
+                <h2 className="display text-xl sm:text-2xl font-bold">
+                  {s(persona.name)}
+                </h2>
+                <p className="mt-2 text-xs sm:text-sm leading-[1.5] text-ink-soft">{s(persona.blurb)}</p>
 
-              <ul className="mt-4 flex flex-wrap gap-2">
-                {personaLevers(id).map((lever) => (
-                  <li
-                    key={lever}
-                    className="rounded-full bg-ink px-3 py-1 text-xs text-white"
-                  >
-                    {s(LEVER_NAME[lever])}
-                  </li>
-                ))}
-                {persona.tactics.slice(0, 3).map((tactic) => (
-                  <li
-                    key={tactic}
-                    className="rounded-full bg-canvas-soft px-3 py-1 text-xs text-ink-soft"
-                  >
-                    {TACTICS[tactic].name[lang]}
-                  </li>
-                ))}
-              </ul>
+                <ul className="mt-3.5 flex flex-wrap gap-1.5">
+                  {personaLevers(id).map((lever) => (
+                    <li
+                      key={lever}
+                      className="rounded-full bg-ink px-2.5 py-0.5 text-[0.7rem] text-white font-medium"
+                    >
+                      {s(LEVER_NAME[lever])}
+                    </li>
+                  ))}
+                  {persona.tactics.slice(0, 3).map((tactic) => (
+                    <li
+                      key={tactic}
+                      className="rounded-full bg-canvas-soft px-2.5 py-0.5 text-[0.7rem] text-ink-soft"
+                    >
+                      {TACTICS[tactic].name[lang]}
+                    </li>
+                  ))}
+                </ul>
+              </div>
 
               <div className="mt-5">
-                <PillLink to={`/practise/${id}`} tone="dark" dot>
-                  {strings.practise.start}
-                </PillLink>
+                <Link
+                  to={`/practise/${id}`}
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-2xl bg-ink px-5 py-3 text-sm font-semibold text-white shadow-sm transition-transform active:scale-[0.98] hover:bg-ink-soft"
+                >
+                  <span>{strings.practise.start}</span>
+                  <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-cyan" />
+                </Link>
               </div>
             </li>
           );
         })}
       </ul>
 
-      <section className="mt-14 rounded-media bg-white/70 p-6">
-        <h2 className="display" style={{ fontSize: 'clamp(1.5rem, 3.6vw, 2.3rem)' }}>
+      <section className="mt-8 rounded-3xl bg-white/95 border border-line/15 p-5 sm:p-6 shadow-sm">
+        <h2 className="display text-xl sm:text-2xl font-bold">
           {strings.practise.quiz}
         </h2>
-        <p className="mt-3 max-w-2xl text-sm leading-[1.5] text-ink-soft">
+        <p className="mt-2 max-w-2xl text-xs sm:text-sm leading-[1.5] text-ink-soft">
           {strings.practise.quizIntro}
         </p>
         <div className="mt-5 flex flex-wrap gap-2">

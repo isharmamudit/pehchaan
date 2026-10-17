@@ -43,6 +43,9 @@
 
 html {
   background: var(--canvas);
+  overflow-x: hidden !important;
+  max-width: 100vw;
+  width: 100%;
 }
 
 body {
@@ -52,7 +55,17 @@ body {
   font-family: 'Schibsted Grotesk', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  overflow-x: hidden !important;
+  max-width: 100vw;
+  width: 100%;
+  position: relative;
+}
+
+#root {
+  width: 100%;
+  max-width: 100vw;
   overflow-x: hidden;
+  position: relative;
 }
 
 [data-lang='hi'] {
@@ -105,6 +118,10 @@ html.lenis body {
     transform: translateY(-2px);
   }
 
+  .pill:active {
+    transform: scale(0.96);
+  }
+
   .pill-dark {
     background: var(--pill-dark);
     color: #fff;
@@ -129,6 +146,23 @@ html.lenis body {
 
   .edge {
     padding-inline: var(--gutter);
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+@media (max-width: 640px) {
+  input, textarea, select {
+    font-size: 16px;
   }
 }
 

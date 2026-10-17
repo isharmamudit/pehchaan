@@ -8,7 +8,10 @@ import { VERDICT_LABELS, VERDICT_SUBTEXT } from '../core/verdict';
 
 export function Page({ children }: { children: ReactNode }) {
   return (
-    <main id="main" className="edge pb-24 pt-28 sm:pt-32">
+    <main
+      id="main"
+      className="edge w-full max-w-full overflow-x-hidden pt-[calc(4.5rem+env(safe-area-inset-top))] pb-[calc(5.5rem+env(safe-area-inset-bottom))] sm:pt-32 sm:pb-24"
+    >
       {children}
     </main>
   );
@@ -22,11 +25,11 @@ export function Kicker({ children }: { children: ReactNode }) {
 
 export function PageTitle({ children, sub }: { children: ReactNode; sub?: ReactNode }) {
   return (
-    <header className="mb-10">
-      <h1 className="display" style={{ fontSize: 'clamp(2.4rem, 7.5vw, 5.5rem)' }}>
+    <header className="mb-6 sm:mb-10 w-full max-w-full overflow-hidden break-words">
+      <h1 className="display text-3xl font-bold tracking-tight sm:text-5xl md:text-6xl break-words" style={{ fontSize: 'clamp(2rem, 6.5vw, 4.5rem)' }}>
         {children}
       </h1>
-      {sub ? <p className="mt-5 max-w-2xl text-[1.02rem] leading-[1.55] text-ink-soft">{sub}</p> : null}
+      {sub ? <p className="mt-2 max-w-2xl text-[0.92rem] leading-relaxed text-ink-mute sm:mt-4 sm:text-[1.02rem] break-words">{sub}</p> : null}
     </header>
   );
 }
@@ -41,8 +44,10 @@ export function Card({
   tone?: 'light' | 'dark';
 }) {
   const base =
-    tone === 'dark' ? 'bg-night text-white' : 'bg-white/60 text-ink';
-  return <section className={`rounded-media p-5 sm:p-7 ${base} ${className}`}>{children}</section>;
+    tone === 'dark'
+      ? 'bg-night text-white shadow-md border border-white/10'
+      : 'bg-white/95 text-ink border border-line/15 shadow-[0_2px_12px_rgba(0,0,0,0.04)]';
+  return <section className={`rounded-card sm:rounded-media p-4 sm:p-7 w-full max-w-full overflow-hidden break-words [overflow-wrap:anywhere] ${base} ${className}`}>{children}</section>;
 }
 
 /* ------------------------------------------------------------- evidence */
@@ -196,11 +201,11 @@ export function Chip({
       type="button"
       onClick={onClick}
       aria-pressed={active}
-      className={`min-h-[44px] rounded-full px-4 py-2 text-sm transition-colors ${cls}`}
+      className={`min-h-[40px] shrink-0 whitespace-nowrap rounded-full px-4 py-2 text-sm transition-colors ${cls}`}
     >
       {children}
     </button>
   ) : (
-    <span className={`inline-flex rounded-full px-4 py-2 text-sm ${cls}`}>{children}</span>
+    <span className={`inline-flex shrink-0 whitespace-nowrap rounded-full px-4 py-2 text-sm ${cls}`}>{children}</span>
   );
 }

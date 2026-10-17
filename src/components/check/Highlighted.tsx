@@ -32,7 +32,7 @@ export default function Highlighted({
   if (cursor < text.length) parts.push({ text: text.slice(cursor) });
 
   return (
-    <p className="whitespace-pre-wrap text-[1.05rem] leading-[1.7]">
+    <p className="whitespace-pre-wrap text-[1.05rem] leading-[1.7] break-words break-all [overflow-wrap:anywhere]">
       {parts.map((part, i) =>
         part.finding ? (
           <mark

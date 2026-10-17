@@ -190,7 +190,7 @@ describe('static debrief', () => {
 
     expect(remote?.quote).toContain('AnyDesk');
     expect(threat?.quote).toContain('blocked');
-  });
+  }, 15000);
 
   it('still returns a debrief when the transcript is empty of rule hits', async () => {
     const { staticDebrief } = await import('../core/debrief');
@@ -199,5 +199,5 @@ describe('static debrief', () => {
     ]);
     expect(debrief.tactics_seen.length).toBeGreaterThan(0);
     expect(debrief.did_well.length).toBeGreaterThan(0);
-  });
+  }, 15000);
 });

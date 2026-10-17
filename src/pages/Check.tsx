@@ -7,15 +7,14 @@
  */
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
-import { Card, Chip, Notice, Page, PageTitle, Spinner } from '../components/ui';
+import { Link, useSearchParams } from 'react-router-dom';
+import { Card, Notice, Page, PageTitle, Spinner } from '../components/ui';
 import { cachedDemo } from '../demo/cache';
-import { PillButton, PillLink } from '../components/Pill';
 import PrivacyChip from '../components/check/PrivacyChip';
 import ResultView from '../components/check/ResultView';
 import { analyzeInput, MAX_TEXT_LENGTH } from '../core/pipeline';
 import { redact } from '../core/redact';
-import { detectInputType, INPUT_TYPE_LABELS } from '../core/detect';
+import { detectInputType } from '../core/detect';
 import { decodeQr, UPI_PAY_WARNING } from '../lib/qr';
 import { readScreenshot, SCREENSHOT_CONSENT } from '../lib/ocr';
 import { speechSupported, startDictation, type SpeechSession } from '../lib/speech';
@@ -25,8 +24,6 @@ import { useLanguage } from '../lib/language';
 import { t } from '../i18n';
 import { demoInput } from '../demo/inputs';
 import type { AnalysisResult, Finding, InputType } from '../core/types';
-
-const INPUT_TYPES: InputType[] = ['message', 'url', 'claim_forward', 'qr', 'voice_transcript', 'screenshot'];
 
 type Stage = 'input' | 'working' | 'result';
 
@@ -231,29 +228,42 @@ export default function Check() {
     <Page>
       <PageTitle sub={strings.check.placeholder}>{strings.check.title}</PageTitle>
 
-      <Card className="space-y-5">
-        <textarea
-          value={listening && interim ? interim : text}
-          onChange={(e) => {
-            setText(e.target.value.slice(0, MAX_TEXT_LENGTH));
-            setUpiPayQr(false);
-          }}
-          rows={7}
-          maxLength={MAX_TEXT_LENGTH}
-          aria-label={strings.check.placeholder}
-          placeholder={strings.check.placeholder}
-          className="w-full resize-y rounded-2xl bg-white/80 p-4 text-[1.05rem] leading-[1.6] outline-none placeholder:text-ink-mute"
-        />
-
-        <div className="flex flex-wrap items-center gap-2">
-          <span className="text-xs uppercase tracking-[0.16em] text-ink-mute">
-            {strings.check.detectedAs}:
-          </span>
-          {INPUT_TYPES.map((type) => (
-            <Chip key={type} active={detected === type} onClick={() => setOverride(type)}>
-              {s(INPUT_TYPE_LABELS[type])}
-            </Chip>
-          ))}
+      <Card className="space-y-4">
+        <div className="relative">
+          <textarea
+            value={listening && interim ? interim : text}
+            onChange={(e) => {
+              setText(e.target.value.slice(0, MAX_TEXT_LENGTH));
+              setUpiPayQr(false);
+            }}
+            rows={5}
+            maxLength={MAX_TEXT_LENGTH}
+            aria-label={strings.check.placeholder}
+            placeholder={strings.check.placeholder}
+            className="w-full resize-none rounded-2xl bg-white p-4 text-[1rem] leading-[1.6] outline-none placeholder:text-ink-mute border border-line/15 focus:border-indigo transition-colors break-words [overflow-wrap:anywhere]"
+          />
+          {!text && (
+            <button
+              type="button"
+              onClick={async () => {
+                try {
+                  const clip = await navigator.clipboard.readText();
+                  if (clip) {
+                    setText(clip.slice(0, MAX_TEXT_LENGTH));
+                    setUpiPayQr(false);
+                  }
+                } catch {
+                  /* clipboard permission not available */
+                }
+              }}
+              className="absolute right-3 bottom-3 inline-flex items-center gap-1.5 rounded-xl bg-canvas-soft px-3 py-1.5 text-xs font-semibold text-ink-soft shadow-sm hover:bg-canvas transition-colors active:scale-95"
+            >
+              <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+              </svg>
+              <span>{s({ en: 'Paste', hi: 'पेस्ट करें' })}</span>
+            </button>
+          )}
         </div>
 
         <PrivacyChip counts={liveCounts} />
@@ -267,28 +277,48 @@ export default function Check() {
         {busyNote ? <Spinner label={busyNote} /> : null}
         {error ? <Notice tone="error">{error}</Notice> : null}
 
-        <div className="flex flex-wrap gap-2">
-          <PillButton
-            tone="dark"
-            dot
+        <div className="space-y-2.5 pt-1">
+          <button
+            type="button"
+            disabled={!text.trim() || stage === 'working'}
             onClick={() => analyse(text, detected, upiPayQr)}
+            className="w-full inline-flex items-center justify-center gap-2 rounded-2xl bg-ink px-6 py-4 text-base font-bold text-white shadow-md transition-all active:scale-[0.98] disabled:opacity-40 disabled:cursor-not-allowed hover:bg-ink-soft"
           >
-            {strings.check.analyse}
-          </PillButton>
+            <span>{strings.check.analyse}</span>
+            <span aria-hidden className="h-2 w-2 rounded-full bg-cyan animate-pulse" />
+          </button>
 
-          <PillButton tone="light" onClick={() => fileRef.current?.click()}>
-            {strings.check.uploadImage}
-          </PillButton>
+          <div className="grid grid-cols-2 gap-2 sm:flex sm:flex-wrap">
+            <button
+              type="button"
+              onClick={() => fileRef.current?.click()}
+              className="inline-flex items-center justify-center gap-1.5 rounded-2xl bg-canvas-soft px-3 py-3 text-xs sm:text-sm font-semibold text-ink transition-transform active:scale-95 hover:bg-white"
+            >
+              <span>📷</span>
+              <span>{strings.check.uploadImage}</span>
+            </button>
 
-          {speechSupported() ? (
-            <PillButton tone={listening ? 'dark' : 'light'} onClick={toggleVoice}>
-              {listening ? strings.check.stop : strings.check.speak}
-            </PillButton>
-          ) : null}
+            {speechSupported() ? (
+              <button
+                type="button"
+                onClick={toggleVoice}
+                className={`inline-flex items-center justify-center gap-1.5 rounded-2xl px-3 py-3 text-xs sm:text-sm font-semibold transition-transform active:scale-95 ${
+                  listening ? 'bg-danger text-white' : 'bg-canvas-soft text-ink hover:bg-white'
+                }`}
+              >
+                <span>🎙️</span>
+                <span>{listening ? strings.check.stop : strings.check.speak}</span>
+              </button>
+            ) : null}
 
-          <PillLink to="/demo" tone="light">
-            {s({ en: 'Demo inputs', hi: 'डेमो इनपुट' })}
-          </PillLink>
+            <Link
+              to="/demo"
+              className="col-span-2 sm:col-span-1 inline-flex items-center justify-center gap-1.5 rounded-2xl bg-canvas-soft px-3 py-3 text-xs sm:text-sm font-semibold text-ink transition-transform active:scale-95 hover:bg-white"
+            >
+              <span>✨</span>
+              <span>{s({ en: 'Try Demo Inputs', hi: 'डेमो इनपुट' })}</span>
+            </Link>
+          </div>
         </div>
 
         <input

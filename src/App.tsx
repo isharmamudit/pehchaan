@@ -18,6 +18,7 @@ const DemoRun = lazy(() => import('./pages/DemoRun'));
 const Lab = lazy(() => import('./pages/Lab'));
 import Preloader from './components/Preloader';
 import SiteNav from './components/SiteNav';
+import BottomNav from './components/BottomNav';
 import { LanguageProvider } from './lib/language';
 import { ScrollTrigger, startSmoothScroll } from './lib/motion';
 import type { Localised } from './core/tactics';
@@ -80,6 +81,8 @@ function Shell() {
           </Routes>
         </Suspense>
       </ErrorBoundary>
+
+      <BottomNav />
     </>
   );
 }

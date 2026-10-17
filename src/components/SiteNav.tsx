@@ -84,26 +84,40 @@ export default function SiteNav() {
 
   return (
     <>
-      <header className="pointer-events-none fixed inset-x-0 top-0 z-[70]">
-        <div className="edge flex items-center justify-between gap-3 py-4 sm:items-start sm:py-5">
+      <header
+        className={`fixed inset-x-0 top-0 z-[70] w-full max-w-full overflow-hidden transition-colors duration-200 backdrop-blur-xl pt-[max(0.5rem,env(safe-area-inset-top))] pb-2 sm:py-4 ${
+          dark
+            ? 'bg-night/90 text-white border-b border-white/10'
+            : 'bg-canvas/90 text-ink border-b border-line/10 shadow-[0_1px_6px_rgba(0,0,0,0.03)]'
+        }`}
+      >
+        <div className="edge flex w-full max-w-full items-center justify-between gap-1.5 sm:gap-3">
           <Link
             to="/"
-            className={`pointer-events-auto whitespace-nowrap text-[1.05rem] font-bold uppercase tracking-[0.02em] transition-colors duration-300 sm:text-[1.6rem] ${inkClass}`}
+            className={`flex items-center gap-1.5 sm:gap-2 shrink-0 text-[0.95rem] font-bold uppercase tracking-[0.02em] transition-colors duration-300 sm:text-[1.6rem] ${inkClass} active:scale-95`}
           >
-            {s(landing.nav.brand)}
+            <span className="flex h-6 w-6 sm:h-8 sm:w-8 items-center justify-center rounded-lg bg-indigo text-white text-xs font-black shadow-sm">
+              P
+            </span>
+            <span className="tracking-tight">{s(landing.nav.brand)}</span>
           </Link>
 
-          <nav className="pointer-events-auto flex items-center gap-1.5 sm:gap-2" aria-label="Primary">
+          <nav className="flex items-center gap-1 sm:gap-2 shrink-0" aria-label="Primary">
             <PillButton
               tone={dark ? 'ghost' : 'light'}
               onClick={toggle}
               ariaLabel={s(landing.nav.langLabel)}
-              className="!px-3.5 sm:!px-4"
+              className="!px-2.5 !py-1 !min-h-[34px] text-xs sm:text-sm sm:!px-4 sm:!min-h-[44px]"
             >
               {s(landing.nav.langShort)}
             </PillButton>
 
-            <PillLink to="/help" tone="dark" dot className="!px-3.5 sm:!px-5">
+            <PillLink
+              to="/help"
+              tone="dark"
+              dot
+              className="!px-2.5 !py-1 !min-h-[34px] text-xs sm:text-sm sm:!px-5 sm:!min-h-[44px] !bg-danger !text-white"
+            >
               <span className="sm:hidden">{s(landing.nav.helpShort)}</span>
               <span className="hidden sm:inline">{s(landing.nav.help)}</span>
             </PillLink>
@@ -113,14 +127,14 @@ export default function SiteNav() {
               onClick={() => setOpen((v) => !v)}
               ariaExpanded={open}
               ariaLabel={open ? s(landing.nav.close) : s(landing.nav.menu)}
-              className="!px-3.5 sm:!px-5"
+              className="!px-2.5 !py-1 !min-h-[34px] sm:!min-h-[44px] sm:!px-5"
             >
               <span className="hidden sm:inline">
                 {open ? s(landing.nav.close) : s(landing.nav.menu)}
               </span>
               <span aria-hidden className="flex gap-1">
-                <span className="h-1 w-1 rounded-full bg-current" />
-                <span className="h-1 w-1 rounded-full bg-current" />
+                <span className="h-1.5 w-1.5 rounded-full bg-current" />
+                <span className="h-1.5 w-1.5 rounded-full bg-current" />
               </span>
             </PillButton>
           </nav>
