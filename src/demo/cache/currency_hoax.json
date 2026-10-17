@@ -1,0 +1,149 @@
+{
+  "id": "currency_hoax",
+  "recordedAt": "2026-10-17T02:37:32.330Z",
+  "source": "offline_rules_only",
+  "result": {
+    "verdict": "likely_scam",
+    "score": 16,
+    "inputType": "claim_forward",
+    "language": "en",
+    "text": "⚠️⚠️⚠️ URGENT NEWS FOR EVERYONE ⚠️⚠️⚠️\nRBI HAS DECIDED THAT 500 RUPEE NOTES WILL BECOME INVALID FROM NEXT MONTH.\nGovernment is hiding this from the public, media will not tell you.\nForward this to 10 groups before it is deleted. Share before it's removed!!!\nWHO says the new notes will also have a tracking chip.",
+    "findings": [
+      {
+        "id": "hoax_shout_marks@0",
+        "tactic": "false_urgency",
+        "matchedText": "⚠️⚠️⚠️ ",
+        "start": 0,
+        "end": 7,
+        "evidence": "rule",
+        "explanation": "Shouting and alarm symbols are used to make a forward feel official and urgent.",
+        "weight": 1,
+        "ruleId": "hoax_shout_marks",
+        "hoaxTemplate": true
+      },
+      {
+        "id": "urgency_words_en@7",
+        "tactic": "false_urgency",
+        "matchedText": "URGENT",
+        "start": 7,
+        "end": 13,
+        "evidence": "rule",
+        "explanation": "Urgent wording is pressure, not information.",
+        "weight": 1,
+        "ruleId": "urgency_words_en"
+      },
+      {
+        "id": "hoax_shout_marks@32",
+        "tactic": "false_urgency",
+        "matchedText": "⚠️⚠️⚠️\n",
+        "start": 32,
+        "end": 39,
+        "evidence": "rule",
+        "explanation": "Shouting and alarm symbols are used to make a forward feel official and urgent.",
+        "weight": 1,
+        "ruleId": "hoax_shout_marks",
+        "hoaxTemplate": true
+      },
+      {
+        "id": "authority_agency@39",
+        "tactic": "fake_authority",
+        "matchedText": "RBI",
+        "start": 39,
+        "end": 42,
+        "evidence": "rule",
+        "explanation": "Naming a big agency borrows its authority; anyone can claim it on a call.",
+        "weight": 2,
+        "ruleId": "authority_agency"
+      },
+      {
+        "id": "hoax_currency_invalid@60",
+        "tactic": "false_urgency",
+        "matchedText": "500 RUPEE NOTES WILL BECOME INVALID",
+        "start": 60,
+        "end": 95,
+        "evidence": "rule",
+        "explanation": "Currency rules change only through an RBI notification, never through a forward.",
+        "weight": 2,
+        "ruleId": "hoax_currency_invalid",
+        "hoaxTemplate": true
+      },
+      {
+        "id": "hoax_conspiracy@113",
+        "tactic": "false_urgency",
+        "matchedText": "Government is hiding",
+        "start": 113,
+        "end": 133,
+        "evidence": "rule",
+        "explanation": "\"They are hiding this\" is used to make you trust a forward over official sources.",
+        "weight": 1,
+        "ruleId": "hoax_conspiracy",
+        "hoaxTemplate": true
+      },
+      {
+        "id": "hoax_conspiracy@156",
+        "tactic": "false_urgency",
+        "matchedText": "media will not tell",
+        "start": 156,
+        "end": 175,
+        "evidence": "rule",
+        "explanation": "\"They are hiding this\" is used to make you trust a forward over official sources.",
+        "weight": 1,
+        "ruleId": "hoax_conspiracy",
+        "hoaxTemplate": true
+      },
+      {
+        "id": "hoax_chain_forward@181",
+        "tactic": "secrecy_isolation",
+        "matchedText": "Forward this to 10 groups",
+        "start": 181,
+        "end": 206,
+        "evidence": "rule",
+        "explanation": "Genuine information never needs you to forward it to a set number of groups.",
+        "weight": 2,
+        "ruleId": "hoax_chain_forward",
+        "hoaxTemplate": true
+      },
+      {
+        "id": "hoax_deletion_urgency@229",
+        "tactic": "false_urgency",
+        "matchedText": "Share before it's removed",
+        "start": 229,
+        "end": 254,
+        "evidence": "rule",
+        "explanation": "\"Share before it is deleted\" exists to stop you from checking first.",
+        "weight": 2,
+        "ruleId": "hoax_deletion_urgency",
+        "hoaxTemplate": true
+      },
+      {
+        "id": "hoax_shout_marks@254",
+        "tactic": "false_urgency",
+        "matchedText": "!!!",
+        "start": 254,
+        "end": 257,
+        "evidence": "rule",
+        "explanation": "Shouting and alarm symbols are used to make a forward feel official and urgent.",
+        "weight": 1,
+        "ruleId": "hoax_shout_marks",
+        "hoaxTemplate": true
+      },
+      {
+        "id": "hoax_global_body@258",
+        "tactic": "false_urgency",
+        "matchedText": "WHO says",
+        "start": 258,
+        "end": 266,
+        "evidence": "rule",
+        "explanation": "These bodies publish on their own websites. A forward is not their announcement.",
+        "weight": 2,
+        "ruleId": "hoax_global_body",
+        "hoaxTemplate": true
+      }
+    ],
+    "claims": [],
+    "urls": [],
+    "redactionCounts": {},
+    "unavailable": [],
+    "cached": true
+  }
+}

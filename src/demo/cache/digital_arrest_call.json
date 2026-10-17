@@ -1,0 +1,118 @@
+{
+  "id": "digital_arrest_call",
+  "recordedAt": "2026-10-17T02:37:32.320Z",
+  "source": "offline_rules_only",
+  "result": {
+    "verdict": "likely_scam",
+    "score": 21,
+    "inputType": "voice_transcript",
+    "language": "en",
+    "text": "Main CBI cyber cell se Inspector Sharma bol raha hoon. Aapke naam se ek parcel pakda gaya hai jisme illegal items hain.\nAapke naam par non-bailable warrant taiyar ho raha hai, giraftar ho sakte hain.\nCall mat kaatiye, video call par rahiye aur kisi ko mat bataiye, ghar me bhi nahi.\nVerification ke liye apna Aadhaar number bataiye aur clearance ke liye RBI safe account me paise transfer kijiye.",
+    "findings": [
+      {
+        "id": "authority_agency@5",
+        "tactic": "fake_authority",
+        "matchedText": "CBI",
+        "start": 5,
+        "end": 8,
+        "evidence": "rule",
+        "explanation": "Naming a big agency borrows its authority; anyone can claim it on a call.",
+        "weight": 2,
+        "ruleId": "authority_agency"
+      },
+      {
+        "id": "authority_agency@9",
+        "tactic": "fake_authority",
+        "matchedText": "cyber cell",
+        "start": 9,
+        "end": 19,
+        "evidence": "rule",
+        "explanation": "Naming a big agency borrows its authority; anyone can claim it on a call.",
+        "weight": 2,
+        "ruleId": "authority_agency"
+      },
+      {
+        "id": "authority_officer@23",
+        "tactic": "fake_authority",
+        "matchedText": "Inspector",
+        "start": 23,
+        "end": 32,
+        "evidence": "rule",
+        "explanation": "A title is not proof. Officials do not demand money or OTPs by phone.",
+        "weight": 1,
+        "ruleId": "authority_officer"
+      },
+      {
+        "id": "threat_legal_en@135",
+        "tactic": "threat_fear",
+        "matchedText": "non-bailable",
+        "start": 135,
+        "end": 147,
+        "evidence": "rule",
+        "explanation": "Real investigations never start with a phone call demanding action.",
+        "weight": 3,
+        "ruleId": "threat_legal_en"
+      },
+      {
+        "id": "threat_legal_en@148",
+        "tactic": "threat_fear",
+        "matchedText": "warrant",
+        "start": 148,
+        "end": 155,
+        "evidence": "rule",
+        "explanation": "Real investigations never start with a phone call demanding action.",
+        "weight": 3,
+        "ruleId": "threat_legal_en"
+      },
+      {
+        "id": "threat_hinglish@176",
+        "tactic": "threat_fear",
+        "matchedText": "giraftar",
+        "start": 176,
+        "end": 184,
+        "evidence": "rule",
+        "explanation": "Fear of arrest or penalty is the oldest trick in this scam.",
+        "weight": 2,
+        "ruleId": "threat_hinglish"
+      },
+      {
+        "id": "secrecy_hinglish@244",
+        "tactic": "secrecy_isolation",
+        "matchedText": "kisi ko mat bataiye",
+        "start": 244,
+        "end": 263,
+        "evidence": "rule",
+        "explanation": "Secrecy exists only to stop someone from warning you.",
+        "weight": 3,
+        "ruleId": "secrecy_hinglish"
+      },
+      {
+        "id": "authority_agency@354",
+        "tactic": "fake_authority",
+        "matchedText": "RBI",
+        "start": 354,
+        "end": 357,
+        "evidence": "rule",
+        "explanation": "Naming a big agency borrows its authority; anyone can claim it on a call.",
+        "weight": 2,
+        "ruleId": "authority_agency"
+      },
+      {
+        "id": "payment_safe_account@358",
+        "tactic": "payment_request",
+        "matchedText": "safe account",
+        "start": 358,
+        "end": 370,
+        "evidence": "rule",
+        "explanation": "There is no such thing as a government \"safe account\". That money is gone.",
+        "weight": 3,
+        "ruleId": "payment_safe_account"
+      }
+    ],
+    "claims": [],
+    "urls": [],
+    "redactionCounts": {},
+    "unavailable": [],
+    "cached": true
+  }
+}

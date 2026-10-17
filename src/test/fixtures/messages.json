@@ -1,0 +1,154 @@
+[
+  {
+    "id": "scam_kyc_block_en",
+    "text": "Dear Customer, your account will be blocked within 24 hours. Complete KYC immediately and share the OTP sent to your number.",
+    "expected": "scam",
+    "language": "en",
+    "source": "team_written",
+    "tactics": ["false_urgency", "threat_fear", "credential_request"]
+  },
+  {
+    "id": "scam_kyc_hinglish",
+    "text": "Sir aapka khata band ho jayega aaj hi. KYC update karne ke liye OTP batao turant.",
+    "expected": "scam",
+    "language": "hinglish",
+    "source": "team_written",
+    "tactics": ["threat_fear", "false_urgency", "credential_request"]
+  },
+  {
+    "id": "scam_digital_arrest_hi",
+    "text": "मैं सीबीआई साइबर सेल से बोल रहा हूँ। आपके नाम पर वारंट है, गिरफ़्तार हो सकते हैं। कॉल मत काटिए और किसी को मत बताना।",
+    "expected": "scam",
+    "language": "hi",
+    "source": "team_written",
+    "tactics": ["fake_authority", "threat_fear", "secrecy_isolation"]
+  },
+  {
+    "id": "scam_remote_access",
+    "text": "Please install AnyDesk from Play Store so I can complete your refund on screen share.",
+    "expected": "scam",
+    "language": "en",
+    "source": "team_written",
+    "tactics": ["remote_access"]
+  },
+  {
+    "id": "scam_task_job",
+    "text": "Work from home job: earn 4000 per day by liking videos. First task free, then pay a refundable deposit of Rs 2000.",
+    "expected": "scam",
+    "language": "en",
+    "source": "team_written",
+    "tactics": ["too_good_to_be_true", "payment_request"]
+  },
+  {
+    "id": "scam_lottery_fee",
+    "text": "Congratulations, you have won a lottery of Rs 10,00,000. Pay a processing fee of Rs 1,999 today only to claim.",
+    "expected": "scam",
+    "language": "en",
+    "source": "team_written",
+    "tactics": ["too_good_to_be_true", "payment_request", "false_urgency"]
+  },
+  {
+    "id": "scam_upi_collect",
+    "text": "To receive your refund of Rs 3,500 please approve the request on your UPI app and enter your UPI PIN.",
+    "expected": "scam",
+    "language": "en",
+    "source": "team_written",
+    "tactics": ["payment_request"]
+  },
+  {
+    "id": "scam_electricity",
+    "text": "URGENT: Your electricity will be disconnected tonight as the bill was not updated. Call officer immediately.",
+    "expected": "scam",
+    "language": "en",
+    "source": "team_written",
+    "tactics": ["false_urgency", "threat_fear", "fake_authority"]
+  },
+  {
+    "id": "scam_safe_account",
+    "text": "For your protection transfer the balance to this RBI safe account. Do not tell anyone, stay on the call.",
+    "expected": "scam",
+    "language": "en",
+    "source": "team_written",
+    "tactics": ["payment_request", "secrecy_isolation", "fake_authority"]
+  },
+  {
+    "id": "scam_parcel_customs",
+    "text": "Customs has held your parcel. Pay customs duty of Rs 850 within 2 hours or legal action will be taken.",
+    "expected": "scam",
+    "language": "en",
+    "source": "team_written",
+    "tactics": ["fake_authority", "payment_request", "false_urgency", "threat_fear"]
+  },
+  {
+    "id": "scam_school_fee",
+    "text": "School accounts office here. Your child's fee payment failed. Pay Rs 12,000 on this UPI now or the name will be struck off.",
+    "expected": "scam",
+    "language": "en",
+    "source": "team_written",
+    "tactics": ["fake_authority", "payment_request", "threat_fear"]
+  },
+  {
+    "id": "scam_pension_hi",
+    "text": "पेंशन खाता बंद हो जाएगा। तुरंत आधार सत्यापन के लिए ओटीपी बताएं।",
+    "expected": "scam",
+    "language": "hi",
+    "source": "team_written",
+    "tactics": ["threat_fear", "false_urgency", "credential_request"]
+  },
+  {
+    "id": "legit_debit_alert",
+    "text": "Rs 2,480.00 debited from A/c XX4417 on 12-03 to SWIGGY. Not you? Call the number printed on your card.",
+    "expected": "legit",
+    "language": "en",
+    "source": "team_written"
+  },
+  {
+    "id": "legit_delivery",
+    "text": "Your order 84412 is out for delivery today between 2 PM and 6 PM. Track it in the app.",
+    "expected": "legit",
+    "language": "en",
+    "source": "team_written"
+  },
+  {
+    "id": "legit_otp_notice",
+    "text": "448213 is your login code. Do not share it with anyone, including bank staff.",
+    "expected": "legit",
+    "language": "en",
+    "source": "team_written"
+  },
+  {
+    "id": "legit_bill_reminder",
+    "text": "Reminder: your electricity bill of Rs 1,340 is due on the 20th. Pay through the board's official app or website.",
+    "expected": "legit",
+    "language": "en",
+    "source": "team_written"
+  },
+  {
+    "id": "legit_family_hi",
+    "text": "नमस्ते, कल शाम घर आ रहे हैं। बच्चों के लिए मिठाई ले आना।",
+    "expected": "legit",
+    "language": "hi",
+    "source": "team_written"
+  },
+  {
+    "id": "legit_appointment",
+    "text": "Your appointment with Dr. Rao is confirmed for Thursday at 11 AM at the clinic. Reply CANCEL to cancel.",
+    "expected": "legit",
+    "language": "en",
+    "source": "team_written"
+  },
+  {
+    "id": "legit_recharge_done",
+    "text": "Recharge of Rs 299 successful. Validity till 28 April. Data 1.5 GB per day.",
+    "expected": "legit",
+    "language": "en",
+    "source": "team_written"
+  },
+  {
+    "id": "legit_group_invite",
+    "text": "Society meeting on Sunday at 10 AM in the community hall. Please attend if possible.",
+    "expected": "legit",
+    "language": "en",
+    "source": "team_written"
+  }
+]

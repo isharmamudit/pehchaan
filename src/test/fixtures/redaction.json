@@ -1,0 +1,62 @@
+[
+  {
+    "id": "red_phone",
+    "input": "Call me on 9876543210 after 5pm",
+    "mustMask": ["9876543210"],
+    "mustKeep": []
+  },
+  {
+    "id": "red_phone_plus91",
+    "input": "My number is +91 98765 43210",
+    "mustMask": ["+91 98765 43210"],
+    "mustKeep": []
+  },
+  {
+    "id": "red_email",
+    "input": "Write to ramesh.kumar@example.com for details",
+    "mustMask": ["ramesh.kumar@example.com"],
+    "mustKeep": []
+  },
+  {
+    "id": "red_aadhaar",
+    "input": "Aadhaar 2345 6789 0123 verification pending",
+    "mustMask": ["2345 6789 0123"],
+    "mustKeep": []
+  },
+  {
+    "id": "red_pan",
+    "input": "PAN ABCDE1234F is linked",
+    "mustMask": ["ABCDE1234F"],
+    "mustKeep": []
+  },
+  {
+    "id": "red_card_luhn",
+    "input": "Card 4539 1488 0343 6467 expiring soon",
+    "mustMask": ["4539 1488 0343 6467"],
+    "mustKeep": []
+  },
+  {
+    "id": "red_otp",
+    "input": "Share the OTP 448213 with the executive",
+    "mustMask": ["448213"],
+    "mustKeep": ["OTP"]
+  },
+  {
+    "id": "red_upi",
+    "input": "Pay to winner.payout@okaxis right now",
+    "mustMask": ["winner.payout@okaxis"],
+    "mustKeep": []
+  },
+  {
+    "id": "red_url_untouched",
+    "input": "Visit kyc-update-sbi.in/verify to continue",
+    "mustMask": [],
+    "mustKeep": ["kyc-update-sbi.in/verify"]
+  },
+  {
+    "id": "red_amount_not_masked",
+    "input": "Your bill of Rs 1340 is due on 20th",
+    "mustMask": [],
+    "mustKeep": ["1340", "20"]
+  }
+]

@@ -1,0 +1,17 @@
+# dependencies and build output
+node_modules
+dist
+coverage
+
+# secrets — never commit these
+.env
+.env.local
+.env.*.local
+supabase/.env.secrets
+supabase/.env.cli
+
+# local tooling and editor state
+.claude/
+.DS_Store
+bench-results.csv
+*.tsbuildinfo

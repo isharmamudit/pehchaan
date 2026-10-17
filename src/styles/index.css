@@ -1,0 +1,152 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/**
+ * Design tokens. The landing page takes its language from the reference:
+ * pale lavender canvas, near-black ink, one strong indigo and one cyan accent,
+ * oversized grotesque type, pill controls and large rounded media cards.
+ */
+:root {
+  --canvas: #edeef8;
+  --canvas-soft: #e4e6f4;
+  --ink: #0b0b0f;
+  --ink-soft: #3b3b45;
+  --ink-mute: #6c6c7a;
+  --indigo: #2f3bf5;
+  --indigo-deep: #1b23b8;
+  --cyan: #46d7e9;
+  --night: #000000;
+  --pill-dark: #1b1b22;
+  --pill-light: #e2e3f0;
+  --line: rgba(11, 11, 15, 0.12);
+
+  /* Verdict colours, shared with the product screens built next. */
+  --danger: #c8102e;
+  --warn: #b26a00;
+  --calm: #1f6f4a;
+
+  --radius-card: 24px;
+  --radius-media: 28px;
+  --gutter: 16px;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --gutter: 40px;
+  }
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  background: var(--canvas);
+}
+
+body {
+  margin: 0;
+  background: var(--canvas);
+  color: var(--ink);
+  font-family: 'Schibsted Grotesk', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+[data-lang='hi'] {
+  font-family: 'Noto Sans Devanagari', 'Schibsted Grotesk', system-ui, sans-serif;
+}
+
+/* Lenis needs the page to scroll normally when it is not running. */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* Focus visibility is never removed, only restyled. */
+:focus-visible {
+  outline: 3px solid var(--indigo);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+@layer components {
+  .display {
+    font-weight: 500;
+    letter-spacing: -0.035em;
+    line-height: 0.92;
+  }
+
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    border-radius: 999px;
+    padding: 0.85rem 1.4rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.35s ease,
+      color 0.35s ease;
+    min-height: 44px;
+  }
+
+  .pill:hover {
+    transform: translateY(-2px);
+  }
+
+  .pill-dark {
+    background: var(--pill-dark);
+    color: #fff;
+  }
+
+  .pill-light {
+    background: var(--pill-light);
+    color: var(--ink);
+  }
+
+  .pill-ghost {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+  }
+
+  .media-card {
+    border-radius: var(--radius-media);
+    overflow: hidden;
+    background: #101014;
+  }
+
+  .edge {
+    padding-inline: var(--gutter);
+  }
+}
+
+[data-reveal] {
+  will-change: transform, opacity;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

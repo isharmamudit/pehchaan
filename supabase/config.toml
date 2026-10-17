@@ -1,0 +1,22 @@
+project_id = "pehchaan"
+
+[functions.analyze]
+verify_jwt = false
+
+[functions.check-urls]
+verify_jwt = false
+
+[functions.fact-check]
+verify_jwt = false
+
+[functions.spar]
+verify_jwt = false
+
+[functions.debrief]
+verify_jwt = false
+
+[functions.xray]
+verify_jwt = false
+
+[functions.ocr]
+verify_jwt = false

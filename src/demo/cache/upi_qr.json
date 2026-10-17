@@ -1,0 +1,32 @@
+{
+  "id": "upi_qr",
+  "recordedAt": "2026-10-17T02:37:32.332Z",
+  "source": "offline_rules_only",
+  "result": {
+    "verdict": "likely_scam",
+    "score": 3,
+    "inputType": "qr",
+    "language": "en",
+    "text": "upi://pay?pa=winner.payout@okaxis&pn=Prize%20Payout%20Desk&am=4999&cu=INR&tn=Processing%20fee",
+    "findings": [
+      {
+        "id": "tgtbt_prize@37",
+        "tactic": "too_good_to_be_true",
+        "matchedText": "Prize",
+        "start": 37,
+        "end": 42,
+        "evidence": "rule",
+        "explanation": "You cannot win a contest you never entered.",
+        "weight": 3,
+        "ruleId": "tgtbt_prize"
+      }
+    ],
+    "claims": [],
+    "urls": [],
+    "redactionCounts": {
+      "UPI": 1
+    },
+    "unavailable": [],
+    "cached": true
+  }
+}

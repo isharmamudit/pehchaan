@@ -1,0 +1,32 @@
+[
+  {
+    "id": "claim_currency_ban",
+    "text": "RBI has decided that 500 rupee notes will become invalid from next month.",
+    "expectedLabel": "not_verified",
+    "topic": "banking_currency"
+  },
+  {
+    "id": "claim_free_laptop",
+    "text": "The government is giving a free laptop to every student who fills this form.",
+    "expectedLabel": "not_verified",
+    "topic": "government_scheme"
+  },
+  {
+    "id": "claim_who_warning",
+    "text": "WHO says the new currency notes contain a tracking chip.",
+    "expectedLabel": "not_verified",
+    "topic": "health"
+  },
+  {
+    "id": "claim_opinion",
+    "text": "In my view the new rules are unfair to small shopkeepers.",
+    "expectedLabel": "opinion",
+    "topic": "other"
+  },
+  {
+    "id": "claim_election_date",
+    "text": "Voting dates for the state election have been changed to next Friday.",
+    "expectedLabel": "not_verified",
+    "topic": "elections"
+  }
+]

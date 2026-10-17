@@ -1,0 +1,89 @@
+{
+  "id": "kyc_sms",
+  "recordedAt": "2026-10-17T02:37:32.311Z",
+  "source": "offline_rules_only",
+  "result": {
+    "verdict": "likely_scam",
+    "score": 12,
+    "inputType": "message",
+    "language": "en",
+    "text": "Dear Customer, aapka account KYC pending hai. Account will be BLOCKED within 24 hrs.\nTurant update karein: kyc-update-sbi.in/verify\nVerification ke liye OTP 448213 share karein jo abhi aapke number 9000000012 par aaya hai.\nAccount no 10020030040 confirm karna zaroori hai, ya call karein 9000000077 par.\n- Bank KYC Executive",
+    "findings": [
+      {
+        "id": "threat_account_block@46",
+        "tactic": "threat_fear",
+        "matchedText": "Account will be BLOCKED",
+        "start": 46,
+        "end": 69,
+        "evidence": "rule",
+        "explanation": "Banks do not threaten to block an account over SMS or a call like this.",
+        "weight": 3,
+        "ruleId": "threat_account_block"
+      },
+      {
+        "id": "urgency_within_time@70",
+        "tactic": "false_urgency",
+        "matchedText": "within 24 hrs",
+        "start": 70,
+        "end": 83,
+        "evidence": "rule",
+        "explanation": "A countdown like this is added so you act before you can check.",
+        "weight": 2,
+        "ruleId": "urgency_within_time"
+      },
+      {
+        "id": "urgency_words_hinglish@85",
+        "tactic": "false_urgency",
+        "matchedText": "Turant",
+        "start": 85,
+        "end": 91,
+        "evidence": "rule",
+        "explanation": "Urgent wording is pressure, not information.",
+        "weight": 1,
+        "ruleId": "urgency_words_hinglish"
+      },
+      {
+        "id": "credential_otp@153",
+        "tactic": "credential_request",
+        "matchedText": "OTP",
+        "start": 153,
+        "end": 156,
+        "evidence": "rule",
+        "explanation": "No bank, company or official ever needs your OTP. Sharing it authorises a transaction.",
+        "weight": 3,
+        "ruleId": "credential_otp"
+      },
+      {
+        "id": "urgency_words_hinglish@180",
+        "tactic": "false_urgency",
+        "matchedText": "abhi",
+        "start": 180,
+        "end": 184,
+        "evidence": "rule",
+        "explanation": "Urgent wording is pressure, not information.",
+        "weight": 1,
+        "ruleId": "urgency_words_hinglish"
+      },
+      {
+        "id": "authority_bank_staff@311",
+        "tactic": "fake_authority",
+        "matchedText": "KYC Executive",
+        "start": 311,
+        "end": 324,
+        "evidence": "rule",
+        "explanation": "Anyone can say they are from the bank. Call the number on your own card instead.",
+        "weight": 2,
+        "ruleId": "authority_bank_staff"
+      }
+    ],
+    "claims": [],
+    "urls": [],
+    "redactionCounts": {
+      "OTP": 1,
+      "PHONE": 2,
+      "ACCOUNT": 1
+    },
+    "unavailable": [],
+    "cached": true
+  }
+}
