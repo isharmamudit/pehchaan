@@ -184,3 +184,17 @@ html.lenis body {
     transform: none !important;
   }
 }
+
+/* Suppress Netlify badge and drawer overlays */
+netlify-drawer,
+#netlify-drawer,
+[data-netlify-drawer],
+iframe[src*="netlify"],
+iframe[title*="Netlify"],
+iframe[id*="netlify"],
+div[id*="netlify"],
+div[class*="netlify"] {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}

@@ -22,6 +22,17 @@
   </head>
   <body>
     <div id="root"></div>
+    <script>
+      (function() {
+        const removeNetlifyBadge = () => {
+          document.querySelectorAll('netlify-drawer, #netlify-drawer, [data-netlify-drawer], iframe[src*="netlify"], iframe[title*="Netlify"]').forEach(el => el.remove());
+        };
+        const observer = new MutationObserver(removeNetlifyBadge);
+        observer.observe(document.documentElement, { childList: true, subtree: true });
+        window.addEventListener('DOMContentLoaded', removeNetlifyBadge);
+        window.addEventListener('load', removeNetlifyBadge);
+      })();
+    </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
