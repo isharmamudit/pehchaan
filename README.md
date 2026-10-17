@@ -1,6 +1,7 @@
 # Pehchaan (पहचान)
 ### *Recognise the tactics behind scams, forwards, and oversharing — before you give anything away.*
 
+[![Netlify Status](https://img.shields.io/badge/Netlify-pehchaancf14.netlify.app-00C7B7?style=flat&logo=netlify&logoColor=white)](https://pehchaancf14.netlify.app/)
 [![Tests](https://img.shields.io/badge/tests-163%20passed-brightgreen.svg)](https://github.com/isharmamudit/pehchaan)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.6-blue.svg)](https://www.typescriptlang.org/)
 [![React](https://img.shields.io/badge/React-18.3-61dafb.svg)](https://react.dev/)
@@ -9,6 +10,11 @@
 [![Offline First](https://img.shields.io/badge/offline--first-deterministic%20rules-orange.svg)](#privacy-and-offline-architecture)
 [![Languages](https://img.shields.io/badge/languages-English%20%7C%20%E0%A4%B9%E0%A4%BF%E0%A4%82%E0%A4%A6%E0%A4%82-indigo.svg)](#bilingual-experience)
 [![Hackathon](https://img.shields.io/badge/HackCom%202026-Building%20a%20Safer%20Digital%20World-red.svg)](#)
+
+---
+
+> 🚀 **Live Demo on Netlify**: [**https://pehchaancf14.netlify.app/**](https://pehchaancf14.netlify.app/)  
+> *Open directly on your smartphone or desktop to test the full mobile UI, 9-tactics scanner, conversational sparring, and photo privacy X-Ray.*
 
 ---
 
